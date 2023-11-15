@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ayuda/theme.dart';
+import 'package:ayuda/theme.dart'; // Importa MyTheme desde theme.dart
 import 'package:ayuda/main.dart'; // Importa MyTheme desde theme.dart
 
 class SplashScreen extends StatelessWidget {
@@ -16,20 +16,17 @@ class SplashScreen extends StatelessWidget {
         } else {
           // Aún esperando, muestra la pantalla de carga con la imagen centrada
           return Scaffold(
-            backgroundColor: MyTheme.lightTheme().colorScheme.primary,
-            body: const Center(
-
-              /* child: Container(
+            backgroundColor: MyTheme.lightTheme().colorScheme.primaryContainer,
+            body: Center(
+              child: Container(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  'assets/whats.png', // Ruta de tu imagen
+                  'assets/pinterest.png', // Ruta de tu imagen
                   width: 150, // Tamaño de la imagen
                   height: 150,
                 ),
-              ),*/
+              ),
             ),
-
-            
           );
         }
       },

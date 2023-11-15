@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
+import 'package:ayuda/theme.dart';
+import 'splashscreen.dart'; 
 
 
 void main() {
@@ -15,8 +17,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      
-      home: HomeApp(),
+
+      home: const SplashScreen(),
     );
   }
 }
@@ -27,6 +29,7 @@ class HomeApp extends StatefulWidget {
   const HomeApp({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeAppState createState() => _HomeAppState();
 }
 
@@ -43,7 +46,7 @@ class _HomeAppState extends State<HomeApp> {
   final List<String> _chipLabels = [
     "Tatuajes",
     "Fotografia",
-    "Ceramica",
+    "Cerámica",
     "Grabado",
     "Outfits",
   ];
@@ -86,6 +89,7 @@ class _HomeAppState extends State<HomeApp> {
       appBar: _currentPage == 0
           ? AppBar(
               title: SingleChildScrollView(
+                
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List<Widget>.generate(_chipLabels.length, (int index) {
@@ -101,10 +105,10 @@ class _HomeAppState extends State<HomeApp> {
                           });
                         },
                         labelStyle: TextStyle(
-                          color: _selectedIndex == index ? Colors.white : Colors.black,
+                          color: _selectedIndex == index ? Colors.white : Colors.black, fontFamily: 'Lato'
                         ),
                         selectedColor: const Color.fromARGB(255, 73, 96, 114),
-                        backgroundColor: Colors.grey.shade300,
+                        backgroundColor: MyTheme.lightTheme().colorScheme.primaryContainer,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                         ),
@@ -120,11 +124,10 @@ class _HomeAppState extends State<HomeApp> {
         children: [
           const MyTwoColumnLayout(),
 
+
+
           CustomScrollView(
             slivers: [
-   
-
-
               const SliverToBoxAdapter(
                 child: SizedBox(height: 16), // Añade un espacio entre la barra de búsqueda y los elementos siguientes
               ),
@@ -188,6 +191,7 @@ class _HomeAppState extends State<HomeApp> {
                 ),
               ),
 
+
   //STORIES BUSQUEDA 
 SliverGrid(
   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -195,6 +199,7 @@ SliverGrid(
     crossAxisSpacing: 16.0,
     mainAxisSpacing: 16.0,
   ),
+
   delegate: SliverChildBuilderDelegate(
     (BuildContext context, int index) {
       return Card(
@@ -209,7 +214,7 @@ SliverGrid(
               height: 350, // Ajusta la altura según sea necesario
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                   image: AssetImage('assets/a1.jpeg'),
+                   image: AssetImage('assets/1.jpg'),
                    fit: BoxFit.cover,
                     ),
                   ),
@@ -220,7 +225,6 @@ SliverGrid(
             ),
             const SizedBox(
               height: 10, // Ajusta la altura según sea necesario
-              
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 
@@ -234,14 +238,12 @@ SliverGrid(
     childCount: 2, // Cambia según cuántas Cards adicionales quieras agregar
   ),
 ),
-
-
-
             ],
           ),
 
-          CustomScrollView(
-            
+
+
+          CustomScrollView(           
             slivers: [ 
  SliverAppBar(
   leading: IconButton(
@@ -254,7 +256,7 @@ SliverGrid(
     child: Text(
       'Perfil  Tableros',
       style: TextStyle(
-        fontSize: 15,
+        fontSize: 15, fontFamily: 'Lato',
       ),
     ),
   ),
@@ -293,7 +295,7 @@ SliverPadding(
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: 'Search Pinterest',
-                              border: InputBorder.none,
+                              border: InputBorder.none
                             ),
                           ),
                         ),
@@ -321,27 +323,27 @@ SliverPadding(
               borderRadius: BorderRadius.circular(10.0),
             ),
             
-            child: Column(
+            child: const Column(
                   children: [
                     Cards(
 
-                      description: 'Tulips in Amsterdam',
+                      description: 'Night out outfit',
                       imagePath: 'assets/4.jpg',
                     ),
                     Cards(
       
-                      description: 'Screen saver of dogs',
+                      description: 'Makeup',
                       imagePath: 'assets/8.jpg',
                     ),
                     Cards(
 
-                      description: 'Tulips in Amsterdam',
+                      description: 'Night out',
                       imagePath: 'assets/4.jpg',
                     ),
 
                     Cards(
 
-                      description: 'Tulips in Amsterdam',
+                      description: 'Outfits',
                       imagePath: 'assets/4.jpg',
                     ),
                     
@@ -379,8 +381,6 @@ SliverPadding(
 
 
 
-
-
 class MyTwoColumnLayout extends StatelessWidget {
   const MyTwoColumnLayout({Key? key}) : super(key: key);
 
@@ -403,17 +403,17 @@ class MyTwoColumnLayout extends StatelessWidget {
                     MyAsymmetricCard(
                       height: 200,
                       description: 'Screen saver of dogs',
-                      imagePath: 'assets/asset2.jpg',
+                      imagePath: 'assets/2.jpg',
                     ),
                     MyAsymmetricCard(
                       height: 120,
-                      description: 'Night outfits',
-                      imagePath: 'assets/asset3.jpg',
+                      description: 'Books',
+                      imagePath: 'assets/3.jpg',
                     ),
                     MyAsymmetricCard(
                       height: 90,
-                      description: 'Book ',
-                      imagePath: 'assets/asset5.jpg',
+                      description: 'Aesthetic',
+                      imagePath: 'assets/5.png',
                     ),
                   ],
                 ),
@@ -424,28 +424,28 @@ class MyTwoColumnLayout extends StatelessWidget {
                   children: [
                     MyAsymmetricCard(
                       height: 180,
-                      description: 'Tulips in Amsterdam',
+                      description: 'Dogs',
                       imagePath: 'assets/2.jpg',
                     ),
                     MyAsymmetricCard(
                       height: 140,
-                      description: 'Tulips in chILE',
-                      imagePath: 'assets/4.jpg',
+                      description: 'Diary',
+                      imagePath: 'assets/3.jpg',
                     ),
                     MyAsymmetricCard(
                       height: 130,
-                      description: 'Descripción 11',
-                      imagePath: 'assets/4.jpg',
+                      description: 'Tulips',
+                      imagePath: 'assets/1.jpg',
                     ),
                     MyAsymmetricCard(
                       height: 95,
-                      description: 'Descripción 12',
-                      imagePath: 'assets/4.jpg',
+                      description: 'Makeup',
+                      imagePath: 'assets/6.jpg',
                     ),
                     MyAsymmetricCard(
                       height: 250,
-                      description: 'Descripción 13',
-                      imagePath: 'assets/4.jpg',
+                      description: 'Eyeshadow',
+                      imagePath: 'assets/7.jpg',
                     ),
                     // MyAsymmetricCard(
                     //   height: 140,
@@ -541,7 +541,7 @@ class Cards extends StatelessWidget {
                   image: AssetImage(imagePath),
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               ),
             ),
             Align(
